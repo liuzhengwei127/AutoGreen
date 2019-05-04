@@ -7,7 +7,7 @@ from selenium import webdriver
 def commit():
     git = repo.git
     git.add(".")
-    git.commit("-m", "have second try to write README.md with localtime and commit it")
+    git.commit("-m", "crawl top3 topic from zhihu to add to README.md")
 
 
 directory = os.path.dirname(os.path.abspath(__file__))

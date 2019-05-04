@@ -8,7 +8,7 @@ repo = Repo(dir)
 if ~repo.bare:
     fp = open("README.md",'a+')
     date = time.strftime('%Y.%m.%d',time.localtime(time.time()))
-    fp.write("date\n")
+    fp.write(date+"\n")
     git = repo.git
     git.add(".")
-    git.commit("-m", "have a try to write README.md with localtime and commit it")
+    git.commit("-m", "have second try to write README.md with localtime and commit it")

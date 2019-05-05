@@ -1,5 +1,6 @@
 import os
 import time
+import re
 from git import Repo
 from selenium import webdriver
 
@@ -15,21 +16,28 @@ print("目录："+directory)
 repo = Repo(directory)
 
 if ~repo.bare:
-    fp = open("README.md",'a+')
-    date = time.strftime('%Y.%m.%d',time.localtime(time.time()))
-
+    # 获取网页数据
     driver = webdriver.Chrome()
     driver.get("https://www.zhihu.com/billboard")
     titles = driver.find_elements_by_class_name("HotList-itemTitle")
-    # urls = driver.find_element_by_class_name()
     contents = driver.find_elements_by_class_name("HotList-itemExcerpt")
 
-    fp.write("# "+date + "\n")
+    text = driver.page_source
+
+    # 写入README
+    fp = open("README.md", 'a+')
+    date = time.strftime('%Y.%m.%d', time.localtime(time.time()))
+    # fp.write("# "+date + "\n")
     for i, title in enumerate(titles):
-        fp.write("## "+title.text+"\n")
-        fp.write(contents[i].text+"\n")
+        pattern = re.compile(title.text+'.{,300}?"cardId":"Q_(.*?)"', re.S)
+        numbers = re.findall(pattern, text)
+        if len(numbers) > 0:
+            url = "https://www.zhihu.com/question/"+numbers[0]
+            fp.write("## [" + title.text + "]("+url+")\n")
+            fp.write(contents[i].text + "\n")
         if i >= 2:
             break
+    fp.close()
 
     driver.close()
     commit()

@@ -5,10 +5,10 @@ from git import Repo
 from selenium import webdriver
 
 
-def commit():
+def commit(date):
     git = repo.git
     git.add(".")
-    git.commit("-m", "crawl top3 topic from zhihu to add to README.md")
+    git.commit("-m", "crawl top3 topic from zhihu to add to README.md "+ date)
 
 
 directory = os.path.dirname(os.path.abspath(__file__))
@@ -27,10 +27,11 @@ if ~repo.bare:
     # 写入README
     fp = open("README.md", 'a+')
     date = time.strftime('%Y.%m.%d', time.localtime(time.time()))
-    # fp.write("# "+date + "\n")
+    fp.write("# "+date + "\n")
     for i, title in enumerate(titles):
-        pattern = re.compile(title.text+'.{,300}?"cardId":"Q_(.*?)"', re.S)
+        pattern = re.compile(title.text+'.{,400}?"cardId":"Q_(.*?)"', re.S)
         numbers = re.findall(pattern, text)
+        print(numbers)
         if len(numbers) > 0:
             url = "https://www.zhihu.com/question/"+numbers[0]
             fp.write("## [" + title.text + "]("+url+")\n")
@@ -40,4 +41,4 @@ if ~repo.bare:
     fp.close()
 
     driver.close()
-    commit()
+    commit(date)

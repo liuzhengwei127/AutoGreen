@@ -23,8 +23,8 @@ class AutoGreen:
         git = self.repo.git
         git.add(".")
         git.commit("-m", "\""+message+"\"")
-	remote = self.repo.remote()
-	remote.push()
+        remote = self.repo.remote()
+        remote.push()
 
     def green(self):
         if ~self.repo.bare:
@@ -47,6 +47,8 @@ class AutoGreen:
                 numbers = re.findall(pattern, text)
                 if len(numbers) > 0:
                     url = "https://www.zhihu.com/question/" + numbers[0]
+                    print(title.text)
+                    print(contents[i].text)
                     fp.write("## [" + title.text + "](" + url + ")\n")
                     fp.write(contents[i].text + "\n")
                 if i >= 2:
@@ -55,7 +57,7 @@ class AutoGreen:
 
             driver.close()
             display.stop()
-	    self._commit(date)
+	    # self._commit(date)
             
 
 autoGreen = AutoGreen()

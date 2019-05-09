@@ -1,6 +1,7 @@
 import os
 import time
 import re
+from pyvirtualdisplay import Display
 from git import Repo
 from selenium import webdriver
 
@@ -23,7 +24,9 @@ class AutoGreen:
     def green(self):
         if ~self.repo.bare:
             # 获取网页数据
-            driver = webdriver.Chrome()
+            display = Display(visible=0, size=(900, 800))
+            display.start()
+            driver = webdriver.Firefox()
             driver.get("https://www.zhihu.com/billboard")
             titles = driver.find_elements_by_class_name("HotList-itemTitle")
             contents = driver.find_elements_by_class_name("HotList-itemExcerpt")
@@ -46,6 +49,7 @@ class AutoGreen:
             fp.close()
 
             driver.close()
+            display.stop()
             # self.commit("crawl top3 topic from zhihu to add to README.md " + date)
             # self._commit("auto")
 

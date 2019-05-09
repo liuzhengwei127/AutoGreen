@@ -23,7 +23,6 @@ class AutoGreen:
         git = self.repo.git
         git.add(".")
         git.commit("-m", "\""+message+"\"")
-	print(123)
 	git.push("origin", "master")
 
     def green(self):

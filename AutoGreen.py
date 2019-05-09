@@ -1,4 +1,7 @@
+# coding=utf-8
+
 import os
+import codecs
 import time
 import re
 from pyvirtualdisplay import Display
@@ -19,7 +22,9 @@ class AutoGreen:
     def _commit(self, message):
         git = self.repo.git
         git.add(".")
-        git.commit("-m", message)
+        git.commit("-m", "\""+message+"\"")
+	print(123)
+	git.push("origin", "master")
 
     def green(self):
         if ~self.repo.bare:
@@ -34,7 +39,7 @@ class AutoGreen:
             text = driver.page_source
 
             # 写入README
-            fp = open("README.md", 'a+')
+            fp = codecs.open("README.md", 'a+','utf-8')
             date = time.strftime('%Y.%m.%d', time.localtime(time.time()))
             fp.write("# " + date + "\n")
             for i, title in enumerate(titles):
@@ -50,13 +55,12 @@ class AutoGreen:
 
             driver.close()
             display.stop()
-            # self.commit("crawl top3 topic from zhihu to add to README.md " + date)
-            # self._commit("auto")
-
+	    self._commit(date)
+            
 
 autoGreen = AutoGreen()
 while True:
     autoGreen.green()
-    print("2")
-    seconds = sleeptime(0,0,30)
+    print("success")
+    seconds = sleeptime(24,0,0)
     time.sleep(seconds)

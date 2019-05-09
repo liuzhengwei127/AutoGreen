@@ -143,3 +143,12 @@ console.error: BroadcastService:
 1557391572374	Marionette	INFO	Listening on port 32923
 1557391572548	Marionette	WARN	TLS certificate errors will be ignored for this session
 1557391578678	Marionette	INFO	Stopped listening on port 32923
+1557391730112	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.cHqXkBnrkZfz"
+1557391731737	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1557391731738	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1557391731738	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+
+(firefox:6854): LIBDBUSMENU-GLIB-WARNING **: Unable to get session bus: Failed to execute child process "dbus-launch" (No such file or directory)
+1557391735824	Marionette	INFO	Listening on port 38536
+1557391735956	Marionette	WARN	TLS certificate errors will be ignored for this session
+1557391743971	Marionette	INFO	Stopped listening on port 38536

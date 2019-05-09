@@ -12,7 +12,7 @@ def sleeptime(hour,min,sec):
 class AutoGreen:
     def __init__(self):
         self.directory = os.path.dirname(os.path.abspath(__file__))
-        print("目录："+self.directory)
+        print("dir："+self.directory)
         self.repo = Repo(self.directory)
 
     def _commit(self, message):

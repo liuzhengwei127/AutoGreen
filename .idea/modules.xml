@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GreenMyself.iml" filepath="$PROJECT_DIR$/.idea/GreenMyself.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AutoGreen.iml" filepath="$PROJECT_DIR$/.idea/AutoGreen.iml" />
     </modules>
   </component>
 </project>

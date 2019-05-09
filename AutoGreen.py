@@ -23,7 +23,8 @@ class AutoGreen:
         git = self.repo.git
         git.add(".")
         git.commit("-m", "\""+message+"\"")
-	git.push("origin", "master")
+	remote = self.repo.remote()
+	remote.push()
 
     def green(self):
         if ~self.repo.bare:

@@ -5,6 +5,10 @@ from git import Repo
 from selenium import webdriver
 
 
+def sleeptime(hour,min,sec):
+    return hour*3600 + min*60 + sec;
+
+
 class AutoGreen:
     def __init__(self):
         self.directory = os.path.dirname(os.path.abspath(__file__))
@@ -33,7 +37,6 @@ class AutoGreen:
             for i, title in enumerate(titles):
                 pattern = re.compile(title.text + '.{,400}?"cardId":"Q_(.*?)"', re.S)
                 numbers = re.findall(pattern, text)
-                print(numbers)
                 if len(numbers) > 0:
                     url = "https://www.zhihu.com/question/" + numbers[0]
                     fp.write("## [" + title.text + "](" + url + ")\n")
@@ -44,8 +47,12 @@ class AutoGreen:
 
             driver.close()
             # self.commit("crawl top3 topic from zhihu to add to README.md " + date)
-            self._commit("oop")
+            # self._commit("auto")
 
 
 autoGreen = AutoGreen()
-autoGreen.green()
+while True:
+    autoGreen.green()
+    print("2")
+    seconds = sleeptime(0,0,30)
+    time.sleep(seconds)

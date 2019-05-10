@@ -57,7 +57,7 @@ class AutoGreen:
 
             driver.close()
             display.stop()
-	    # self._commit(date)
+	    self._commit(date)
             
 
 autoGreen = AutoGreen()

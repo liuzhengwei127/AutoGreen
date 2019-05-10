@@ -1,0 +1,7 @@
+dir：/home/AutoGreen
+Traceback (most recent call last):
+  File "AutoGreen.py", line 65, in <module>
+    autoGreen.green()
+  File "AutoGreen.py", line 50, in green
+    print(title.text)
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-18: ordinal not in range(128)

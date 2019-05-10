@@ -321,3 +321,13 @@ console.error: BroadcastService:
 1557487569596	Marionette	WARN	TLS certificate errors will be ignored for this session
 1557487572106	Marionette	INFO	Stopped listening on port 38820
 [Parent 4234, Gecko_IOThread] WARNING: pipe error (120): Connection reset by peer: file /build/firefox-i2nBcb/firefox-66.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357
+1557487961543	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.2pEvRHedE1hj"
+1557487962190	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: mozillaAddons
+1557487962190	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: resource://pdf.js/
+1557487962190	addons.webextension.screenshots@mozilla.org	WARN	Loading extension 'screenshots@mozilla.org': Reading manifest: Invalid extension permission: about:reader*
+
+(firefox:4469): LIBDBUSMENU-GLIB-WARNING **: Unable to get session bus: Failed to execute child process "dbus-launch" (No such file or directory)
+1557487964392	Marionette	INFO	Listening on port 43206
+1557487964471	Marionette	WARN	TLS certificate errors will be ignored for this session
+1557487967560	Marionette	INFO	Stopped listening on port 43206
+[Parent 4469, Gecko_IOThread] WARNING: pipe error (133): Connection reset by peer: file /build/firefox-i2nBcb/firefox-66.0.3+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 357

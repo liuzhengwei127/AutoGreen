@@ -47,8 +47,6 @@ class AutoGreen:
                 numbers = re.findall(pattern, text)
                 if len(numbers) > 0:
                     url = "https://www.zhihu.com/question/" + numbers[0]
-                    print(title.text)
-                    print(contents[i].text)
                     fp.write("## [" + title.text + "](" + url + ")\n")
                     fp.write(contents[i].text + "\n")
                 if i >= 2:

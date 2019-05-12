@@ -4,7 +4,6 @@ import os
 import codecs
 import time
 import re
-from pyvirtualdisplay import Display
 from git import Repo
 from selenium import webdriver
 
@@ -16,8 +15,8 @@ def sleeptime(hour,min,sec):
 class AutoGreen:
     def __init__(self):
         self.directory = os.path.dirname(os.path.abspath(__file__))
-        print("dir："+self.directory)
         self.repo = Repo(self.directory)
+        print("dir：" + self.directory)
 
     def _commit(self, message):
         git = self.repo.git
@@ -29,9 +28,9 @@ class AutoGreen:
     def green(self):
         if ~self.repo.bare:
             # 获取网页数据
-            display = Display(visible=0, size=(900, 800))
-            display.start()
-            driver = webdriver.Firefox()
+            firefox_options = webdriver.FirefoxOptions()
+            firefox_options.headless = True
+            driver = webdriver.Firefox(options=firefox_options)
             driver.get("https://www.zhihu.com/billboard")
             titles = driver.find_elements_by_class_name("HotList-itemTitle")
             contents = driver.find_elements_by_class_name("HotList-itemExcerpt")
@@ -43,7 +42,7 @@ class AutoGreen:
             date = time.strftime('%Y.%m.%d', time.localtime(time.time()))
             fp.write("# " + date + "\n")
             for i, title in enumerate(titles):
-                pattern = re.compile(title.text + '.{,400}?"cardId":"Q_(.*?)"', re.S)
+                pattern = re.compile(title.text + '.{,500}?"cardId":"Q_(.*?)"', re.S)
                 numbers = re.findall(pattern, text)
                 if len(numbers) > 0:
                     url = "https://www.zhihu.com/question/" + numbers[0]
@@ -52,15 +51,13 @@ class AutoGreen:
                 if i >= 2:
                     break
             fp.close()
-
             driver.close()
-            display.stop()
-	    self._commit(date)
-            
+        self._commit(date)
+        return date
+
 
 autoGreen = AutoGreen()
 while True:
-    autoGreen.green()
-    print("success")
+    print(autoGreen.green()+": success")
     seconds = sleeptime(24,0,0)
     time.sleep(seconds)

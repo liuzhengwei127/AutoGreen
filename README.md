@@ -23,7 +23,7 @@
 
 3. 后台运行AutoGreen.py脚本
 
-   linux环境下	`nohup python AutoGreen.py &`
+   linux环境下	`nohup python -u AutoGreen.py &`
 
 
 

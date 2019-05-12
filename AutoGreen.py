@@ -40,13 +40,13 @@ class AutoGreen:
             # 写入README
             fp = codecs.open("README.md", 'a+','utf-8')
             date = time.strftime('%Y.%m.%d', time.localtime(time.time()))
-            fp.write("# " + date + "\n")
+            fp.write("### " + date + "\n")
             for i, title in enumerate(titles):
                 pattern = re.compile(title.text + '.{,500}?"cardId":"Q_(.*?)"', re.S)
                 numbers = re.findall(pattern, text)
                 if len(numbers) > 0:
                     url = "https://www.zhihu.com/question/" + numbers[0]
-                    fp.write("## [" + title.text + "](" + url + ")\n")
+                    fp.write("#### [" + title.text + "](" + url + ")\n")
                     fp.write(contents[i].text + "\n")
                 if i >= 2:
                     break

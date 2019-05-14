@@ -11,6 +11,7 @@
 * python
   * selenium	`pip install selenium`
   * gitpython	`pip install gitpython`
+  * argparse	`pip install argparse`
 * firefox/chrome
   * 用firefox的话下载[geckodriver](https://github.com/mozilla/geckodriver)驱动
   * 用chrome的话下载[chromedriver](<https://blog.csdn.net/qq_41188944/article/details/79039690>)驱动

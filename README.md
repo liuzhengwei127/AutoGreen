@@ -11,8 +11,10 @@
 * python
   * selenium	`pip install selenium`
   * gitpython	`pip install gitpython`
-* firefox
-  * 下载[geckodriver](https://github.com/mozilla/geckodriver)驱动
+  * argparse	`pip install argparse`
+* firefox/chrome
+  * 用firefox的话下载[geckodriver](https://github.com/mozilla/geckodriver)驱动
+  * 用chrome的话下载[chromedriver](<https://blog.csdn.net/qq_41188944/article/details/79039690>)驱动
 * 建议放于linux云服务器上
 
 ### 使用教程
@@ -23,7 +25,11 @@
 
 3. 后台运行AutoGreen.py脚本
 
-   linux环境下	`nohup python -u AutoGreen.py &`
+   linux环境下	`nohup python -u AutoGreen.py --browser chrome &`或
+
+   `nohup python -u AutoGreen.py --browser firefox&`
+
+   
 
 
 

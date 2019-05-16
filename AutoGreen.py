@@ -13,9 +13,10 @@ def sleeptime(hour,min,sec):
 
 
 class AutoGreen:
-    def __init__(self):
+    def __init__(self, browser):
         self.directory = os.path.dirname(os.path.abspath(__file__))
         self.repo = Repo(self.directory)
+        self.browser = browser
         print("dir：" + self.directory)
 
     def _commit(self, message):
@@ -28,13 +29,17 @@ class AutoGreen:
     def green(self):
         if ~self.repo.bare:
             # 获取网页数据
-            firefox_options = webdriver.FirefoxOptions()
-            firefox_options.headless = True
-            driver = webdriver.Firefox(options=firefox_options)
+            if self.browser=='firefox':
+                firefox_options = webdriver.FirefoxOptions()
+                firefox_options.headless = True
+                driver = webdriver.Firefox(options=firefox_options)
+            else:
+                chrome_options = webdriver.ChromeOptions()
+                chrome_options.headless = True
+                driver = webdriver.Chrome(options=chrome_options)
             driver.get("https://www.zhihu.com/billboard")
             titles = driver.find_elements_by_class_name("HotList-itemTitle")
             contents = driver.find_elements_by_class_name("HotList-itemExcerpt")
-
             text = driver.page_source
 
             # 写入README
@@ -56,8 +61,16 @@ class AutoGreen:
         return date
 
 
-autoGreen = AutoGreen()
-while True:
-    print(autoGreen.green()+": success")
-    seconds = sleeptime(24,0,0)
-    time.sleep(seconds)
+if __name__ == '__main__':
+    import argparse
+    parser = argparse.ArgumentParser(description='auto green')
+    parser.add_argument('-b', '--browser', help='the browser you use...')
+    args = parser.parse_args()
+    if args.browser and args.browser == 'chrome':
+        autoGreen = AutoGreen('chrome')
+    else:
+        autoGreen = AutoGreen('firefox')
+    while True:
+        print(autoGreen.green()+": success")
+        seconds = sleeptime(24,0,0)
+        time.sleep(seconds)

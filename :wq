@@ -1,0 +1,31 @@
+dir：/home/AutoGreen
+2019.05.12: success
+dir：/home/AutoGreen
+2019.06.13: success
+2019.06.14: success
+2019.06.15: success
+2019.06.16: success
+2019.06.17: success
+2019.06.18: success
+2019.06.19: success
+2019.06.20: success
+2019.06.21: success
+2019.06.22: success
+2019.06.23: success
+2019.06.24: success
+2019.06.25: success
+2019.06.26: success
+2019.06.27: success
+Traceback (most recent call last):
+  File "AutoGreen.py", line 74, in <module>
+    print(autoGreen.green()+": success")
+  File "AutoGreen.py", line 40, in green
+    driver.get("https://www.zhihu.com/billboard")
+  File "/usr/local/lib/python2.7/dist-packages/selenium/webdriver/remote/webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "/usr/local/lib/python2.7/dist-packages/selenium/webdriver/remote/webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "/usr/local/lib/python2.7/dist-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Failed to decode response from marionette
+

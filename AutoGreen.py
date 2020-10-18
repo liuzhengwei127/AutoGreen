@@ -34,9 +34,7 @@ class AutoGreen:
                 firefox_options.headless = True
                 driver = webdriver.Firefox(options=firefox_options)
             else:
-                chrome_options = webdriver.ChromeOptions()
-                chrome_options.headless = True
-                driver = webdriver.Chrome(options=chrome_options)
+                driver = webdriver.Chrome(executable_path="./drivers/chromedriver.exe")
             driver.get("https://www.zhihu.com/billboard")
             titles = driver.find_elements_by_class_name("HotList-itemTitle")
             contents = driver.find_elements_by_class_name("HotList-itemExcerpt")
